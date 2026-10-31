@@ -25,7 +25,17 @@ namespace ScheduleSystem
             }
         }
 
-        // Обработчики кликов по меню мы добавим позже, 
-        // когда создадим формы для справочников и операций.
+        private void группыСтудентовToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _container.Resolve<FormStudentGroups>().ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

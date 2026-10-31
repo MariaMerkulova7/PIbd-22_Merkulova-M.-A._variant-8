@@ -39,7 +39,11 @@ namespace ScheduleSystem
 
             // Регистрируем формы для Аудиторий
             container.RegisterType<FormAudience>();
+            container.RegisterType<FormAudiences>();
 
+            // Регистрируем формы для Групп студентов
+            container.RegisterType<FormStudentGroup>();
+            container.RegisterType<FormStudentGroups>();
             return container;
         }
     }

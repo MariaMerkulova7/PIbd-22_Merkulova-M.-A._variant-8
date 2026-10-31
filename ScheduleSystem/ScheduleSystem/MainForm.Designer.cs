@@ -76,6 +76,7 @@
             группыСтудентовToolStripMenuItem2.Name = "группыСтудентовToolStripMenuItem2";
             группыСтудентовToolStripMenuItem2.Size = new Size(180, 22);
             группыСтудентовToolStripMenuItem2.Text = "Группы студентов";
+            группыСтудентовToolStripMenuItem2.Click += группыСтудентовToolStripMenuItem2_Click;
             // 
             // преподавателиToolStripMenuItem
             // 
