@@ -48,5 +48,53 @@ namespace ScheduleSystem
                 MessageBox.Show(ex.Message, "Ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void дисциплиныToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _container.Resolve<FormDisciplines>().ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void связьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _container.Resolve<FormTeacherDisciplines>().ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void учебныйПланToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _container.Resolve<FormCurriculums>().ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void расписаниеЗанятийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _container.Resolve<FormLessons>().ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

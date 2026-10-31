@@ -48,6 +48,20 @@ namespace ScheduleSystem
             // Регистрируем формы для Преподавателей
             container.RegisterType<FormTeacher>();
             container.RegisterType<FormTeachers>();
+
+            // Регистрируем формы для Дисциплин
+            container.RegisterType<FormDiscipline>();
+            container.RegisterType<FormDisciplines>();
+
+            container.RegisterType<FormTeacherDiscipline>();
+            container.RegisterType<FormTeacherDisciplines>();
+
+            container.RegisterType<FormCurriculum>();
+            container.RegisterType<FormCurriculums>();
+
+            container.RegisterType<FormLesson>();
+            container.RegisterType<FormLessons>();
+
             return container;
         }
     }

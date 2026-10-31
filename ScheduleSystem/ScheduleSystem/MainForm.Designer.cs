@@ -67,29 +67,30 @@
             // аудиторииToolStripMenuItem1
             // 
             аудиторииToolStripMenuItem1.Name = "аудиторииToolStripMenuItem1";
-            аудиторииToolStripMenuItem1.Size = new Size(180, 22);
+            аудиторииToolStripMenuItem1.Size = new Size(173, 22);
             аудиторииToolStripMenuItem1.Text = "Аудитории";
             аудиторииToolStripMenuItem1.Click += аудиторииToolStripMenuItem1_Click;
             // 
             // группыСтудентовToolStripMenuItem2
             // 
             группыСтудентовToolStripMenuItem2.Name = "группыСтудентовToolStripMenuItem2";
-            группыСтудентовToolStripMenuItem2.Size = new Size(180, 22);
+            группыСтудентовToolStripMenuItem2.Size = new Size(173, 22);
             группыСтудентовToolStripMenuItem2.Text = "Группы студентов";
             группыСтудентовToolStripMenuItem2.Click += группыСтудентовToolStripMenuItem2_Click;
             // 
             // преподавателиToolStripMenuItem
             // 
             преподавателиToolStripMenuItem.Name = "преподавателиToolStripMenuItem";
-            преподавателиToolStripMenuItem.Size = new Size(180, 22);
+            преподавателиToolStripMenuItem.Size = new Size(173, 22);
             преподавателиToolStripMenuItem.Text = "Преподаватели";
             преподавателиToolStripMenuItem.Click += преподавателиToolStripMenuItem_Click;
             // 
             // дисциплиныToolStripMenuItem
             // 
             дисциплиныToolStripMenuItem.Name = "дисциплиныToolStripMenuItem";
-            дисциплиныToolStripMenuItem.Size = new Size(180, 22);
+            дисциплиныToolStripMenuItem.Size = new Size(173, 22);
             дисциплиныToolStripMenuItem.Text = "Дисциплины";
+            дисциплиныToolStripMenuItem.Click += дисциплиныToolStripMenuItem_Click;
             // 
             // операцииToolStripMenuItem1
             // 
@@ -103,18 +104,21 @@
             учебныйПланToolStripMenuItem.Name = "учебныйПланToolStripMenuItem";
             учебныйПланToolStripMenuItem.Size = new Size(266, 22);
             учебныйПланToolStripMenuItem.Text = "Учебный план";
+            учебныйПланToolStripMenuItem.Click += учебныйПланToolStripMenuItem_Click;
             // 
             // связьToolStripMenuItem
             // 
             связьToolStripMenuItem.Name = "связьToolStripMenuItem";
             связьToolStripMenuItem.Size = new Size(266, 22);
             связьToolStripMenuItem.Text = "Связь Преподаватель-Дисциплина";
+            связьToolStripMenuItem.Click += связьToolStripMenuItem_Click;
             // 
             // расписаниеЗанятийToolStripMenuItem
             // 
             расписаниеЗанятийToolStripMenuItem.Name = "расписаниеЗанятийToolStripMenuItem";
             расписаниеЗанятийToolStripMenuItem.Size = new Size(266, 22);
             расписаниеЗанятийToolStripMenuItem.Text = "Расписание занятий";
+            расписаниеЗанятийToolStripMenuItem.Click += расписаниеЗанятийToolStripMenuItem_Click;
             // 
             // отчётыToolStripMenuItem1
             // 
