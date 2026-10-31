@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\Enums\" />
     <Folder Include="Forms\" />
     <Folder Include="Repositories\Implementations\" />
   </ItemGroup>
