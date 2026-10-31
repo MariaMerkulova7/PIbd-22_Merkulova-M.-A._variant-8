@@ -83,6 +83,7 @@
             преподавателиToolStripMenuItem.Name = "преподавателиToolStripMenuItem";
             преподавателиToolStripMenuItem.Size = new Size(180, 22);
             преподавателиToolStripMenuItem.Text = "Преподаватели";
+            преподавателиToolStripMenuItem.Click += преподавателиToolStripMenuItem_Click;
             // 
             // дисциплиныToolStripMenuItem
             // 

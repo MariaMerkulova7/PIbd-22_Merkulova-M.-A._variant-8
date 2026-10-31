@@ -37,5 +37,16 @@ namespace ScheduleSystem
             }
         }
 
+        private void преподавателиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _container.Resolve<FormTeachers>().ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
