@@ -1,5 +1,6 @@
 using ScheduleSystem.Repositories;
 using ScheduleSystem.Repositories.Implementations;
+using ScheduleSystem.Forms;
 using Unity;
 using Unity.Lifetime;
 
@@ -37,7 +38,6 @@ namespace ScheduleSystem
             container.RegisterType<ILessonRepository, LessonRepository>(new TransientLifetimeManager());
 
             // Регистрируем формы для Аудиторий
-            container.RegisterType<FormAudiences>();
             container.RegisterType<FormAudience>();
 
             return container;

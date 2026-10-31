@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             mainMenuStrip = new MenuStrip();
-            справочникиToolStripMenuItem = new ToolStripMenuItem();
-            аудиторииToolStripMenuItem = new ToolStripMenuItem();
-            группыToolStripMenuItem = new ToolStripMenuItem();
-            группыСтудентовToolStripMenuItem1 = new ToolStripMenuItem();
-            группыСтудентовToolStripMenuItem = new ToolStripMenuItem();
-            операцииToolStripMenuItem = new ToolStripMenuItem();
-            отчётыToolStripMenuItem = new ToolStripMenuItem();
             справочникToolStripMenuItem = new ToolStripMenuItem();
             аудиторииToolStripMenuItem1 = new ToolStripMenuItem();
             группыСтудентовToolStripMenuItem2 = new ToolStripMenuItem();
@@ -46,6 +39,13 @@
             связьToolStripMenuItem = new ToolStripMenuItem();
             расписаниеЗанятийToolStripMenuItem = new ToolStripMenuItem();
             отчётыToolStripMenuItem1 = new ToolStripMenuItem();
+            справочникиToolStripMenuItem = new ToolStripMenuItem();
+            аудиторииToolStripMenuItem = new ToolStripMenuItem();
+            группыToolStripMenuItem = new ToolStripMenuItem();
+            группыСтудентовToolStripMenuItem1 = new ToolStripMenuItem();
+            группыСтудентовToolStripMenuItem = new ToolStripMenuItem();
+            операцииToolStripMenuItem = new ToolStripMenuItem();
+            отчётыToolStripMenuItem = new ToolStripMenuItem();
             mainMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -56,41 +56,6 @@
             mainMenuStrip.Name = "mainMenuStrip";
             mainMenuStrip.Size = new Size(800, 24);
             mainMenuStrip.TabIndex = 0;
-            // 
-            // справочникиToolStripMenuItem
-            // 
-            справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
-            справочникиToolStripMenuItem.Size = new Size(32, 19);
-            // 
-            // аудиторииToolStripMenuItem
-            // 
-            аудиторииToolStripMenuItem.Name = "аудиторииToolStripMenuItem";
-            аудиторииToolStripMenuItem.Size = new Size(32, 19);
-            // 
-            // группыToolStripMenuItem
-            // 
-            группыToolStripMenuItem.Name = "группыToolStripMenuItem";
-            группыToolStripMenuItem.Size = new Size(32, 19);
-            // 
-            // группыСтудентовToolStripMenuItem1
-            // 
-            группыСтудентовToolStripMenuItem1.Name = "группыСтудентовToolStripMenuItem1";
-            группыСтудентовToolStripMenuItem1.Size = new Size(32, 19);
-            // 
-            // группыСтудентовToolStripMenuItem
-            // 
-            группыСтудентовToolStripMenuItem.Name = "группыСтудентовToolStripMenuItem";
-            группыСтудентовToolStripMenuItem.Size = new Size(32, 19);
-            // 
-            // операцииToolStripMenuItem
-            // 
-            операцииToolStripMenuItem.Name = "операцииToolStripMenuItem";
-            операцииToolStripMenuItem.Size = new Size(32, 19);
-            // 
-            // отчётыToolStripMenuItem
-            // 
-            отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
-            отчётыToolStripMenuItem.Size = new Size(32, 19);
             // 
             // справочникToolStripMenuItem
             // 
@@ -104,6 +69,7 @@
             аудиторииToolStripMenuItem1.Name = "аудиторииToolStripMenuItem1";
             аудиторииToolStripMenuItem1.Size = new Size(180, 22);
             аудиторииToolStripMenuItem1.Text = "Аудитории";
+            аудиторииToolStripMenuItem1.Click += аудиторииToolStripMenuItem1_Click;
             // 
             // группыСтудентовToolStripMenuItem2
             // 
@@ -153,6 +119,41 @@
             отчётыToolStripMenuItem1.Name = "отчётыToolStripMenuItem1";
             отчётыToolStripMenuItem1.Size = new Size(60, 20);
             отчётыToolStripMenuItem1.Text = "Отчёты";
+            // 
+            // справочникиToolStripMenuItem
+            // 
+            справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
+            справочникиToolStripMenuItem.Size = new Size(32, 19);
+            // 
+            // аудиторииToolStripMenuItem
+            // 
+            аудиторииToolStripMenuItem.Name = "аудиторииToolStripMenuItem";
+            аудиторииToolStripMenuItem.Size = new Size(32, 19);
+            // 
+            // группыToolStripMenuItem
+            // 
+            группыToolStripMenuItem.Name = "группыToolStripMenuItem";
+            группыToolStripMenuItem.Size = new Size(32, 19);
+            // 
+            // группыСтудентовToolStripMenuItem1
+            // 
+            группыСтудентовToolStripMenuItem1.Name = "группыСтудентовToolStripMenuItem1";
+            группыСтудентовToolStripMenuItem1.Size = new Size(32, 19);
+            // 
+            // группыСтудентовToolStripMenuItem
+            // 
+            группыСтудентовToolStripMenuItem.Name = "группыСтудентовToolStripMenuItem";
+            группыСтудентовToolStripMenuItem.Size = new Size(32, 19);
+            // 
+            // операцииToolStripMenuItem
+            // 
+            операцииToolStripMenuItem.Name = "операцииToolStripMenuItem";
+            операцииToolStripMenuItem.Size = new Size(32, 19);
+            // 
+            // отчётыToolStripMenuItem
+            // 
+            отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
+            отчётыToolStripMenuItem.Size = new Size(32, 19);
             // 
             // MainForm
             // 
