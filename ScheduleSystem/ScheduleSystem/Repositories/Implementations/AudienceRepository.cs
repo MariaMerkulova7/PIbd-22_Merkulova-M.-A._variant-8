@@ -56,7 +56,8 @@ namespace ScheduleSystem.Repositories.Implementations
             _logger.LogDebug("Поиск аудитории по Id: {Id}", id);
             try
             {
-                return _context.Audiences.Find(id) ?? throw new Exception("Аудитория не найдена");
+                return _context.Audiences.AsNoTracking().FirstOrDefault(a => a.Id == id)
+                    ?? throw new Exception("Аудитория не найдена");
             }
             catch (Exception ex)
             {

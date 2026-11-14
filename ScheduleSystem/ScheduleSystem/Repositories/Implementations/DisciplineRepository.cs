@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using ScheduleSystem.Data;
 using ScheduleSystem.Entities;
 using ScheduleSystem.Repositories;
@@ -36,7 +37,11 @@ namespace ScheduleSystem.Repositories.Implementations
 
         public Discipline ReadDisciplineById(int id)
         {
-            try { return _context.Disciplines.Find(id) ?? throw new Exception("Дисциплина не найдена"); }
+            try
+            {
+                return _context.Disciplines.AsNoTracking().FirstOrDefault(d => d.Id == id)
+                    ?? throw new Exception("Дисциплина не найдена");
+            }
             catch (Exception ex) { _logger.LogError(ex, "Ошибка при поиске дисциплины"); throw; }
         }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using ScheduleSystem.Data;
 using ScheduleSystem.Entities;
 using ScheduleSystem.Repositories;
@@ -36,7 +37,11 @@ namespace ScheduleSystem.Repositories.Implementations
 
         public StudentGroup ReadStudentGroupById(int id)
         {
-            try { return _context.StudentGroups.Find(id) ?? throw new Exception("Группа не найдена"); }
+            try
+            {
+                return _context.StudentGroups.AsNoTracking().FirstOrDefault(sg => sg.Id == id)
+                    ?? throw new Exception("Группа не найдена");
+            }
             catch (Exception ex) { _logger.LogError(ex, "Ошибка при поиске группы"); throw; }
         }
 

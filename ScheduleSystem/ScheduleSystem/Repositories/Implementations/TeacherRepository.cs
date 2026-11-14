@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using ScheduleSystem.Data;
 using ScheduleSystem.Entities;
 using ScheduleSystem.Repositories;
@@ -36,7 +37,11 @@ namespace ScheduleSystem.Repositories.Implementations
 
         public Teacher ReadTeacherById(int id)
         {
-            try { return _context.Teachers.Find(id) ?? throw new Exception("Преподаватель не найден"); }
+            try
+            {
+                return _context.Teachers.AsNoTracking().FirstOrDefault(t => t.Id == id)
+                    ?? throw new Exception("Преподаватель не найден");
+            }
             catch (Exception ex) { _logger.LogError(ex, "Ошибка при поиске преподавателя"); throw; }
         }
 
