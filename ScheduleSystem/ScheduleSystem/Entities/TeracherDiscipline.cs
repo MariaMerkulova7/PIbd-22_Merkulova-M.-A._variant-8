@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ScheduleSystem.Entities
 {
     public class TeacherDiscipline
     {
-        public int Id { get; private set; }
-        public int TeacherId { get; private set; }
-        public int DisciplineId { get; private set; }
+        public TeacherDiscipline() { }
 
-        public static TeacherDiscipline CreateEntity(int id, int teacherId, int disciplineId)
-        {
-            return new TeacherDiscipline
-            {
-                Id = id,
-                TeacherId = teacherId,
-                DisciplineId = disciplineId
-            };
-        }
+        [Key]
+        public int Id { get; protected set; }
+
+        [Required]
+        [ForeignKey("Teacher")]
+        public int TeacherId { get; protected set; }
+
+        [Required]
+        [ForeignKey("Discipline")]
+        public int DisciplineId { get; protected set; }
+
+        public static TeacherDiscipline CreateEntity(int id, int teacherId, int disciplineId) =>
+            new() { Id = id, TeacherId = teacherId, DisciplineId = disciplineId };
     }
 }

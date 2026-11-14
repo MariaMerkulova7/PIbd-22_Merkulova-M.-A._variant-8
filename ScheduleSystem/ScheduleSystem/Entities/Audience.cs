@@ -5,25 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 
 using ScheduleSystem.Entities.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ScheduleSystem.Entities
 {
     public class Audience
     {
-        public int Id { get; private set; }
-        public string Number { get; private set; } = string.Empty;
-        public int Capacity { get; private set; }
-        public AudienceType AudienceType { get; private set; }
+        public Audience() { }
 
-        public static Audience CreateEntity(int id, string number, int capacity, AudienceType audienceType)
-        {
-            return new Audience
-            {
-                Id = id,
-                Number = number ?? string.Empty,
-                Capacity = capacity,
-                AudienceType = audienceType
-            };
-        }
+        [Key]
+        public int Id { get; protected set; }
+
+        [Required]
+        [Column("Number", TypeName = "varchar(50)")]
+        public string Number { get; protected set; } = string.Empty;
+
+        [Column("Capacity")]
+        public int Capacity { get; protected set; }
+
+        [Column("AudienceType")]
+        public AudienceType AudienceType { get; protected set; }
+
+        public static Audience CreateEntity(int id, string number, int capacity, AudienceType audienceType) =>
+            new() { Id = id, Number = number ?? string.Empty, Capacity = capacity, AudienceType = audienceType };
     }
 }

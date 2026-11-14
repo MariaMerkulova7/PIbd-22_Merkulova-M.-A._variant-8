@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ScheduleSystem.Entities
 {
     public class Discipline
     {
-        public int Id { get; private set; }
-        public string Name { get; private set; } = string.Empty;
-        public string Description { get; private set; } = string.Empty;
+        public Discipline() { }
 
-        public static Discipline CreateEntity(int id, string name, string description)
-        {
-            return new Discipline
-            {
-                Id = id,
-                Name = name ?? string.Empty,
-                Description = description ?? string.Empty
-            };
-        }
+        [Key]
+        public int Id { get; protected set; }
+
+        [Required]
+        [Column("Name", TypeName = "varchar(100)")]
+        public string Name { get; protected set; } = string.Empty;
+
+        [Column("Description", TypeName = "varchar(500)")]
+        public string? Description { get; protected set; }
+
+        public static Discipline CreateEntity(int id, string name, string? description) =>
+            new() { Id = id, Name = name ?? string.Empty, Description = description };
     }
 }

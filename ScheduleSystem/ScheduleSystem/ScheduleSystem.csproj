@@ -28,4 +28,10 @@
     <PackageReference Include="Unity.Container" Version="5.11.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

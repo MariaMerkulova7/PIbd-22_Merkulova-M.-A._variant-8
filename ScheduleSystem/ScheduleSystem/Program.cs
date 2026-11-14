@@ -1,64 +1,98 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using ScheduleSystem.Data;
+using ScheduleSystem.Forms;
 using ScheduleSystem.Repositories;
 using ScheduleSystem.Repositories.Implementations;
-using ScheduleSystem.Forms;
+using Serilog;
 using Unity;
+using Unity.Injection;
 using Unity.Lifetime;
 
 namespace ScheduleSystem
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(CreateContainer().Resolve<MainForm>());
+
+            // Настраиваем Serilog из appsettings.json
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(configuration)
+                .CreateLogger();
+
+            try
+            {
+                Log.Information("Приложение запущено");
+                Application.Run(CreateContainer().Resolve<MainForm>());
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Приложение завершено с ошибкой");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
 
         private static IUnityContainer CreateContainer()
         {
             var container = new UnityContainer();
 
-            // Регистрируем справочники
+            // Регистрация DbContext
+            container.RegisterType<ScheduleDbContext>(
+                new TransientLifetimeManager(),
+                new InjectionFactory(_ =>
+                {
+                    var optionsBuilder = new DbContextOptionsBuilder<ScheduleDbContext>();
+                    optionsBuilder.UseNpgsql(
+                        "Host=localhost;Port=5432;Database=schedule_db;Username=postgres;Password=postgres");
+                    return new ScheduleDbContext(optionsBuilder.Options);
+                }));
+
+            // Регистрация LoggerFactory для Serilog
+            var loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder.AddSerilog(Log.Logger);
+            });
+            container.RegisterInstance<ILoggerFactory>(loggerFactory);
+
+            // Регистрация справочников (CRUD)
             container.RegisterType<IAudienceRepository, AudienceRepository>(new TransientLifetimeManager());
             container.RegisterType<IStudentGroupRepository, StudentGroupRepository>(new TransientLifetimeManager());
             container.RegisterType<ITeacherRepository, TeacherRepository>(new TransientLifetimeManager());
             container.RegisterType<IDisciplineRepository, DisciplineRepository>(new TransientLifetimeManager());
 
-            // Регистрируем связку многие-ко-многим
+            // Регистрация связи многие-ко-многим
             container.RegisterType<ITeacherDisciplineRepository, TeacherDisciplineRepository>(new TransientLifetimeManager());
 
-            // Регистрируем операции
+            // Регистрация операций
             container.RegisterType<ICurriculumRepository, CurriculumRepository>(new TransientLifetimeManager());
             container.RegisterType<ILessonRepository, LessonRepository>(new TransientLifetimeManager());
 
-            // Регистрируем формы для Аудиторий
+            // Регистрация форм
             container.RegisterType<FormAudience>();
             container.RegisterType<FormAudiences>();
-
-            // Регистрируем формы для Групп студентов
             container.RegisterType<FormStudentGroup>();
             container.RegisterType<FormStudentGroups>();
-
-            // Регистрируем формы для Преподавателей
             container.RegisterType<FormTeacher>();
             container.RegisterType<FormTeachers>();
-
-            // Регистрируем формы для Дисциплин
             container.RegisterType<FormDiscipline>();
             container.RegisterType<FormDisciplines>();
-
             container.RegisterType<FormTeacherDiscipline>();
             container.RegisterType<FormTeacherDisciplines>();
-
             container.RegisterType<FormCurriculum>();
             container.RegisterType<FormCurriculums>();
-
             container.RegisterType<FormLesson>();
             container.RegisterType<FormLessons>();
 
