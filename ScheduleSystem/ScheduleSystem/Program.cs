@@ -56,7 +56,7 @@ namespace ScheduleSystem
                 {
                     var optionsBuilder = new DbContextOptionsBuilder<ScheduleDbContext>();
                     optionsBuilder.UseNpgsql(
-                        "Host=localhost;Port=5432;Database=schedule_db;Username=postgres;Password=postgres");
+                        "Host=localhost;Port=5432;Database=schedule_db;Username=postgres;Password=qwerty");
                     return new ScheduleDbContext(optionsBuilder.Options);
                 }));
 
@@ -66,6 +66,18 @@ namespace ScheduleSystem
                 builder.AddSerilog(Log.Logger);
             });
             container.RegisterInstance<ILoggerFactory>(loggerFactory);
+
+            // –егистраци€ ILogger<T> Ч через обобщЄнный метод
+            container.RegisterType(typeof(ILogger<>),
+                new InjectionFactory((c, t, n) =>
+                {
+                    var genericArg = t.GetGenericArguments()[0];
+                    var createLoggerMethod = typeof(LoggerFactoryExtensions)
+                        .GetMethods()
+                        .First(m => m.Name == "CreateLogger" && m.IsGenericMethodDefinition)
+                        .MakeGenericMethod(genericArg);
+                    return createLoggerMethod.Invoke(null, new object[] { loggerFactory });
+                }));
 
             // –егистраци€ справочников (CRUD)
             container.RegisterType<IAudienceRepository, AudienceRepository>(new TransientLifetimeManager());
